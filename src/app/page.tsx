@@ -1,113 +1,115 @@
-import Image from "next/image";
+import CareerItem from "@/widgets/Item/CareerItem";
+import ProjectItem from "@/widgets/Item/ProjectItem";
+import Navigator from "@/widgets/header/Navigator";
+import { navDict } from "@/widgets/header/consts";
+import Section from "./components/Section";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <>
+      <h1 className="visually-hidden">Gangsan O Portfolio</h1>
+      <header>
+        <Navigator />
+      </header>
+      <main className="flex-center">
+        <Section title={navDict.introduce}>
+          <div className="text-center">
+            <p className="text-2xl mb-8">웹 개발자 오강산입니다.</p>
+            <p className="text-xl mb-4">
+              <span className="font-bold">주도적 성장</span>과{" "}
+              <span className="font-bold">건강한 관계</span>를 추구합니다.
+            </p>
+            <p className="text-sm">
+              성장과 관계에서 기쁨을 얻습니다.
+              <br />
+              주도적 성장을 위해 명확한 기준치 설정과
+              <br />
+              짧은 주기의 피드백을 받을 수 있는 환경을 조성하고
+              <br />
+              건강한 관계 구축을 위해 적극적 소통을 시도합니다.
+            </p>
+          </div>
+        </Section>
+        <Section title={navDict.projects}>
+          <ProjectItem
+            title="사진 공유 SNS 웹 서비스 구축"
+            role="풀스택, 팀장"
+            team="총원 6명"
+            time={{
+              start: new Date("2023-12-10"),
+              end: new Date("2023-12-29"),
+            }}
+            ImageComponent={<div>예시 이미지</div>}
+            contents={[
+              <div key={"sns-1"}>
+                정해진 짧은 기간 내에 MVP를 구축하여 프로젝트 관리 능력을 향상
+                시키고자 진행한 프로젝트
+              </div>,
+              <div key={"sns-2"}>
+                데일리 스크럼으로 이슈 및 진행 상황을 공유, 코드 병합 시 코드
+                리뷰를 통해 자신의 의도를 전달하고 다른 사람의 코드를 이해하는
+                능력 향상 도모
+              </div>,
+              <div key={"sns-3"}>
+                기능별 작업 분배 후 수직적 관심사 분리로 유지보수성 향상 및
+                팀원간 코드 충돌을 최소화 시키고자 진행한 프로젝트
+              </div>,
+              <div key={"sns-4"}>
+                Error Boundary 및 Suspense를 활용한 선언적 프로그래밍으로 코드
+                가독성 및 간결성 향상에 기여
+              </div>,
+              <div key={"sns-5"}>
+                API 설계 시 자원 중심적 설계로 명확한 URI 설계를 도모함으로써
+                API 가독성과 유지보수성 향상에 기여
+              </div>,
+            ]}
+          />
+        </Section>
+        <Section title={navDict.career}>
+          <CareerItem
+            title="Elice SW Engineer Track"
+            subTitle="웹 개발 교육 기관 | 교육생"
+            contents={[
+              <div key={"elice-1"}>
+                프로젝트 관리 및 협업 능력 향상을 목적으로 참가
+              </div>,
+              <div key={"elice-2"}>
+                다양한 프로젝트에서 종/횡단적 관심사 분리를 실험함으로써 상황에
+                맞는 프로젝트 구조를 효과적으로 구축하는 능력을 향상
+              </div>,
+              <div key={"elice-3"}>
+                모든 프로젝트에서 팀장과 풀스택 역할을 담당하며 기획부터
+                배포까지 프로젝트 전반에 대한 경험을 쌓음
+              </div>,
+              <div key={"elice-4"}>
+                1차 스터디 인기상 수상, 1차 프로젝트 최우수상 수상 및{" "}
+                <span className=" text-red-500">최종 프로젝트 대상 수상</span>
+              </div>,
+            ]}
+          />
+        </Section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <Section title={navDict.education}>경대졸업함</Section>
+      </main>
+    </>
   );
 }
+
+/**
+ * 1. 프로젝트 소개
+
+프로젝트 명칭과 개요로 본인이 어떤 목적으로 이 프로젝트를 만들었는지, 그리고 이렇게 구현하게 된 배경은 무엇인지 등을 간략하게 설명합니다.
+2. 개발 과정
+
+프로젝트를 진행하면서 발생한 문제, 그리고 문제해결 포인트로 개발하는 과정에서 겪은 어려움과 이 문제를 해결한 방법에 대한 구체적 내용을 작성합니다.
+3. 기술 스택
+
+- 프로젝트에서 사용한 기술 스택을 기록합니다.
+- 어떤 언어, 프레임워크, 라이브러리를 사용했는지 적어줍니다. 이때 특정 기능 구현 시 사용한 기술 스택을 상세히 작성합니다.
+4. 결과물
+
+정리된 프로젝트의 결과물 (스크린샷, 링크) 등 실제로 개발한 서비스의 캡쳐 화면과 접속할 수 있는 링크를 남깁니다.
+5. 인사이트
+
+프로젝트를 진행하면서 얻은 개인적인 경험과 인사이트를 기록합니다. 자신이 특히 노력했던 부분이나 발생한 문제들, 그리고 그것을 어떻게 극복했는지를 적습니다.
+ */
